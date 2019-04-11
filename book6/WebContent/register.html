@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div id="header" class="wrap">
+	<div id="logo"> 
+	   传习教育网上书城
+	</div>
+    <div style="width:380px; height:50px; float:right; position:absolute; left:60%; top:2px; line-height:50px">
+	    <img src="images/cart.gif" style="margin-bottom:-4px" width="26" height="23">
+		  欢迎您： madan &nbsp;
+                  <a href="myAccount.jsp">我的帐户</a>
+				| <a href="productCategory.jsp">商品分类</a> 
+				| <a href="#">帮助中心</a>  
+		</div>
+	<div id="navbar">
+		<form method="get" name="search" action="">
+			搜索：<input class="input-text" type="text" name="keywords" /><input class="input-btn" type="submit" name="submit" value="" />
+		</form>
+	</div>
+</div>
+<div id="register">
+	<div class="title">
+		<h2>欢迎注册传习教育网上书城</h2>
+	</div>
+	<div class="steps">
+		<ul class="clearfix">
+			<li class="current">1.填写注册信息</li>
+			<li class="unpass">2.注册成功</li>
+		</ul>
+	</div>
+	<form method="post" action="doRegister.jsp"
+	onSubmit="return regCheck()">
+		<dl>
+			<dt>用 户 名：</dt>
+			<dd><input class="input-text" type="text" name="userName" id="uid" /><span id="utip"></span></dd>
+			<dt>密　　码：</dt>
+			<dd><input class="input-text" type="password" name="passWord" id="pwdId"/><span id="ptip"></span></dd>
+			<dt>确认密码：</dt>
+			<dd><input class="input-text" type="password" name="rePassWord" id="repid" /><span id="retip"> </span></dd>
+			<dt>Email地址：</dt>
+			<dd>
+			<input id="eid" class="input-text" type="text" name="email" /><span id="etip"></span></dd>
+			<dt></dt>
+			<dd class="button"><input class="input-reg" type="submit" name="register" value="" /></dd>
+		</dl>
+	</form>
+</div>
+<div id="footer" class="wrap">
+	传习教育网上书城 &copy; 版权所有
+
+</div>
+<script language="javascript" type="text/javascript">
+	function regCheck(){
+		//alert("点击提交后的信息...");
+		//return false;
+		var uobj= document.getElementById("uid");
+		document.getElementById("utip").innerHTML="";
+		document.getElementById("ptip").innerHTML="";
+		document.getElementById("retip").innerHTML="";
+		document.getElementById("etip").innerHTML="";
+		if(uobj.value==""){
+			//alert("注册的用户名不能为空....");
+			document.getElementById("utip").innerHTML="注册的用户名不能为空";
+			return false;
+		}else if(uobj.value.length<3){
+			//alert("注册的用户名不能小于3个字符....");
+			document.getElementById("utip").innerHTML="注册的用户名不能小于3个字符";
+			return false;
+		}
+		//密码的验证		
+		var pobj= document.getElementById("pwdId");
+		if(pobj.value==""){
+	 		//alert("密码不能为空！");
+			document.getElementById("ptip").innerHTML="密码不能为空";
+			return false;
+		}else if(pobj.value.length<4 || pobj.value.length>16){
+			//alert("注册的用户名不能小于3个字符....");
+			document.getElementById("ptip").innerHTML="注册的长度在4-16个字符之间";
+			return false;
+		}
+		//再次验证密码
+		var repobj=document.getElementById("repid");
+		if(repobj.value != pobj.value){
+			document.getElementById("retip").innerHTML="确认密码不一致！";
+			return false;
+		}
+		//验证邮箱
+		var eobj=document.getElementById("eid");
+		if(eobj.value==""){
+			document.getElementById("etip").innerHTML="邮箱地址不能为空！";
+			return false;
+		}else if(eobj.value.indexOf('@')<0){
+			document.getElementById("etip").innerHTML="邮箱地址不正确！";
+			return false;
+		}else if(eobj.value.indexOf('.')<0){
+			document.getElementById("etip").innerHTML="邮箱地址不正确！";
+			return false;
+		}
+		return true;
+	}
+</script>
+</body>
+</html>

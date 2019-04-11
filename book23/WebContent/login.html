@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div id="header" class="wrap">
+	<div id="logo"> 
+	   传习教育网上书城
+	</div>
+    <div style="width:380px; height:50px; float:right; position:absolute; left:60%; top:2px; line-height:50px">
+	    <img src="images/cart.gif" style="margin-bottom:-4px" width="26" height="23">
+		  欢迎您： madan &nbsp;
+                  <a href="myAccount.jsp">我的帐户</a>
+				| <a href="productCategory.jsp">商品分类</a> 
+				| <a href="#">帮助中心</a>  
+		</div>
+	<div id="navbar">
+		<form method="get" name="search" action="">
+			搜索：<input class="input-text" type="text" name="keywords" /><input class="input-btn" type="submit" name="submit" value="" />
+		</form>
+	</div>
+</div>
+<div id="login">
+	<h2>用户登陆</h2>
+	<form method="post" action="doLogin.jsp" onSubmit="return regCheck()">
+		<dl>
+			<dt>用户名：</dt>
+			<dd><input class="input-text" type="text" name="userName" id="uid"/><span id="suid">当前用户不存在！</span></dd>
+			<dt>密　码：</dt>
+			<dd><input class="input-text" type="password" name="passWord" id="pid"/><span id="spid">密码错误！</span></dd>
+			<dt></dt>
+			<dd class="button"><input class="input-btn" type="submit" name="submit" value="" /><input class="input-reg" type="button" name="register" value="" onclick="window.location='register.html';" /></dd>
+		</dl>
+	</form>
+</div>
+<div id="footer" class="wrap">
+	传习教育网上书城 &copy; 版权所有
+
+</div>
+
+<script language="javascript" type="text/javascript">
+	function regCheck(){
+		document.getElementById("suid").innerHTML="";
+		document.getElementById("spid").innerHTML="";
+		//用户名的验证
+		var uobj= document.getElementById("uid");
+		if(uobj.value！=""){
+			document.getElementById("suid").innerHTML="注册的用户名不能为空";
+			return false;
+		}
+		//密码的验证		
+		var pobj= document.getElementById("pid");
+		if(pobj.value！=""){
+			document.getElementById("spid").innerHTML="密码错误";
+			return false;
+		}
+		return true;
+	}
+</script>
+</body>
+</html>
